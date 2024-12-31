@@ -24,34 +24,23 @@
   </table>
 
   <script>
-    // Function to calculate total price and append a row with the total
-    function calculateTotalPrice() {
-      // Get all price elements
-      const priceElements = document.querySelectorAll('[data-ns-test="prices"]');
-      let total = 0;
+    // Inline JavaScript for calculating the total price
+    const priceElements = document.querySelectorAll('[data-ns-test="prices"]');
+    let total = 0;
 
-      // Calculate the sum of prices
-      priceElements.forEach(priceElement => {
-        total += parseFloat(priceElement.textContent);
-      });
+    priceElements.forEach(priceElement => {
+      total += parseFloat(priceElement.textContent);
+    });
 
-      // Create a new row for the total
-      const table = document.getElementById('grocery-table');
-      const totalRow = document.createElement('tr');
-
-      // Create a single cell for the total price
-      const totalCell = document.createElement('td');
-      totalCell.colSpan = 2; // Span both columns for a cleaner look
-      totalCell.textContent = `Total: ${total}`;
-      totalCell.setAttribute('data-ns-test', 'grandTotal');
-
-      // Append the cell to the row and the row to the table
-      totalRow.appendChild(totalCell);
-      table.appendChild(totalRow);
-    }
-
-    // Call the function to calculate and display the total price
-    calculateTotalPrice();
+    const table = document.getElementById('grocery-table');
+    const totalRow = document.createElement('tr');
+    const totalCell = document.createElement('td');
+    totalCell.colSpan = 2;
+    totalCell.textContent = total;
+    totalCell.setAttribute('data-ns-test', 'grandTotal');
+    totalRow.appendChild(totalCell);
+    table.appendChild(totalRow);
   </script>
 </body>
 </html>
+
